@@ -1,25 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+  const [task, setTask] = useState(""); 
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+    setTasks([...tasks, task]); 
+    setTask("");
+  };
 
   return (
-    <>
-      <div class="filter">
-			<form>
-				<input type="text" name="items"  id="txt"/>
-				<button type="submit">ADD</button>
-			</form>	
-        </div>
+    <div className="Home">
+      <h1>TodoReact</h1>
 
-		<ul id="listItems">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter new task"
+          value={task}
+          onSubmit={(e) => setTask(e.target.value)}
+        />
+        <button type="submit">Submit</button>
+      </form>
 
-    </ul>
-
-    </>
-  )
+      <div className="list">
+        {tasks.map((taskItem, index) => (
+          <div key={index}>{taskItem}</div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
