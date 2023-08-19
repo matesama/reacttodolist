@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import './App.css';
+import ToDoItems from "./components/ToDoItem";
+
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -7,7 +9,11 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
-    setTasks([...tasks, task]); 
+    //get ID
+    let randomId = Math.random() * 100000;
+    const taskItem = {id: randomId,
+                      text: task};
+    setTasks([...tasks, taskItem]); 
     setTask("");
   };
 
@@ -20,16 +26,16 @@ function App() {
           type="text"
           placeholder="Enter new task"
           value={task}
-          onSubmit={(e) => setTask(e.target.value)}
+          onChange={(e) => setTask(e.target.value)}
         />
         <button type="submit">Submit</button>
       </form>
 
-      <div className="list">
+      <ul className="list">
         {tasks.map((taskItem, index) => (
-          <div key={index}>{taskItem}</div>
+          <ToDoItems key={index}  taskItem={taskItem}/>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
