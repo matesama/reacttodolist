@@ -17,6 +17,8 @@ function App() {
     setTask("");
   };
 
+ 
+
   return (
     <div className="Home">
       <h1>TodoReact</h1>
@@ -33,7 +35,7 @@ function App() {
 
       <ul className="list">
         {tasks.map((taskItem, index) => (
-          <ToDoItems key={index}  taskItem={taskItem}/>
+          <ToDoItems key={index}  taskItem={taskItem} tasks={tasks} setTasks={setTasks}/>
         ))}
       </ul>
     </div>

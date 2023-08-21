@@ -10,7 +10,7 @@ const DoneTickBox = () => {
 
 
 
-    return <input type="checkBox" class="doneTickBox" onClick={handleCheckBox} />;
+    return <input type="checkBox" className="doneTickBox" onClick={handleCheckBox} />;
 }
 
 export default DoneTickBox;

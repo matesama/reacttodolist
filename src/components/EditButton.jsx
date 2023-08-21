@@ -1,8 +1,7 @@
 import {useState, useEffect} from "react";
 
 const EditButton = () => {
-    const [changeText, setChangeText] = useState("");
-    const [editingState, setEditingState] = useState(false);
+    
     
     const handleEditButton = (e) => {
         const listItem = e.target.parentNode;
