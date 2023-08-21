@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import ToDoItems from "./components/ToDoItem";
 
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  //const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState(""); 
 
   const handleSubmit = (e) => {
@@ -16,6 +16,21 @@ function App() {
     setTasks([...tasks, taskItem]); 
     setTask("");
   };
+
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks")
+
+  if(savedTasks) {
+    return JSON.parse(savedTasks);
+  } else {
+      return [];
+  }
+
+  }) 
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
  
 
