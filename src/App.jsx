@@ -8,13 +8,17 @@ function App() {
   const [task, setTask] = useState(""); 
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
+    if (task === "") {
+      return alert("please type a todo")
+    } else { 
+      e.preventDefault(); 
     //get ID
     let randomId = Math.random() * 100000;
     const taskItem = {id: randomId,
                       text: task};
     setTasks([...tasks, taskItem]); 
     setTask("");
+    }
   };
 
   const [tasks, setTasks] = useState(() => {
