@@ -1,35 +1,69 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+// import { Link } from 'react-router-dom';
 import './App.css';
+import ToDoItems from "./components/ToDoItem";
+
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  //const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState(""); 
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
-    setTasks([...tasks, task]); 
+    if (task === "") {
+      return alert("please type a todo")
+    } else { 
+      e.preventDefault(); 
+    //get ID
+    let randomId = Math.random() * 100000;
+    const taskItem = {id: randomId,
+                      text: task,
+                      done: false};
+    setTasks([...tasks, taskItem]); 
     setTask("");
+    }
   };
+
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks")
+
+  if(savedTasks) {
+    return JSON.parse(savedTasks);
+  } else {
+      return [];
+  }
+
+  }) 
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, []);
+  
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+ 
 
   return (
     <div className="Home">
-      <h1>TodoReact</h1>
-
+       <a href='/'>
+        <h1>TodoReact</h1>
+      </a>  
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Enter new task"
           value={task}
-          onSubmit={(e) => setTask(e.target.value)}
+          onChange={(e) => setTask(e.target.value)}
         />
         <button type="submit">Submit</button>
       </form>
 
-      <div className="list">
+      <ul className="list">
         {tasks.map((taskItem, index) => (
-          <div key={index}>{taskItem}</div>
+          <ToDoItems key={index}  taskItem={taskItem} tasks={tasks} setTasks={setTasks}/>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
