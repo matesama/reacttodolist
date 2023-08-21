@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+// import { Link } from 'react-router-dom';
 import './App.css';
 import ToDoItems from "./components/ToDoItem";
 
@@ -15,7 +16,8 @@ function App() {
     //get ID
     let randomId = Math.random() * 100000;
     const taskItem = {id: randomId,
-                      text: task};
+                      text: task,
+                      done: false};
     setTasks([...tasks, taskItem]); 
     setTask("");
     }
@@ -34,14 +36,19 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, []);
+  
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
  
 
   return (
     <div className="Home">
-      <h1>TodoReact</h1>
-
+       <a href='/'>
+        <h1>TodoReact</h1>
+      </a>  
       <form onSubmit={handleSubmit}>
         <input
           type="text"

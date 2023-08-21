@@ -7,12 +7,8 @@ const DoneTickBox = () => {
         listItem.style.textDecoration = "none";
     }
 
-
-
-
     return <input type="checkBox" className="doneTickBox" onClick={handleCheckBox} />;
     
-        
 }
 
 export default DoneTickBox;

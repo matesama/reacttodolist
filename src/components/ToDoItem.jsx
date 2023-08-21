@@ -4,19 +4,18 @@ import DoneTickBox from './DoneTickBox';
 import EditButton from "./EditButton";
  
  const ToDoItem = ({index, taskItem, tasks, setTasks}) => {
-   const [changeText, setChangeText] = useState("");
+    const [changeText, setChangeText] = useState("");
     const [editingState, setEditingState] = useState(false);
 
-    const handleSave = () => {
+    const handleSave = (e) => {
+      e.preventDefault(); 
       const updatedTasks = tasks.map((task) => {
         if (task.id === taskItem.id) {
           return { ...task, text: changeText };
         }
         return task;
       });
-    
       setTasks(updatedTasks);
-    
       setEditingState(false);
     };
 
@@ -24,9 +23,9 @@ import EditButton from "./EditButton";
     return( 
     <div id={taskItem.id}> 
       {editingState ? (
-      <form> 
+      <form onSubmit={handleSave}> 
          <input value={changeText} type="text" onChange={(e)=>setChangeText(e.target.value)} /> 
-         <button type="button" onClick={handleSave}>Save</button> 
+         <button type="submit">Save</button> 
       </form>) :  
       <li 
       key={taskItem.id}>{taskItem.text}
