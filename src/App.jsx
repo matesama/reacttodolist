@@ -8,21 +8,6 @@ function App() {
   //const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState(""); 
 
-  const handleSubmit = (e) => {
-    if (task === "") {
-      return alert("please type a todo")
-    } else { 
-      e.preventDefault(); 
-    //get ID
-    let randomId = Math.random() * 100000;
-    const taskItem = {id: randomId,
-                      text: task,
-                      done: false};
-    setTasks([...tasks, taskItem]); 
-    setTask("");
-    }
-  };
-
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem("tasks")
 
@@ -33,16 +18,40 @@ function App() {
   }
 
   }) 
-
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, []);
   
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
- 
+
+  
+
+  /*useEffect(() => {
+    const savedTasks = localStorage.getItem("tasks")
+    if(savedTasks) {
+       setTasks(JSON.parse(savedTasks));
+    }
+  }, []);*/
+
+  
+  
+
+  const handleSubmit = (e) => {
+    if (task === "") {
+      return alert("please type a todo")
+    } else { 
+      e.preventDefault(); 
+    //get ID
+    let randomId = Math.random() * 100000;
+    const taskItem = {id: randomId,
+                      text: task,
+                    done: false};
+    setTasks([...tasks, taskItem]); 
+    setTask("");
+    }
+  };
+
+  
 
   return (
     <div className="Home">
