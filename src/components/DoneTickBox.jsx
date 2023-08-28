@@ -1,10 +1,17 @@
-const DoneTickBox = () => {
+const DoneTickBox = ({taskItem, tasks, setTasks}) => {
 
-    const handleCheckBox = (e) => {
-        const listItem = e.target.parentNode;
-        e.target.classList.toggle("checked") ? 
-        listItem.style.textDecoration = "line-through":
-        listItem.style.textDecoration = "none";
+    const handleCheckBox = () => {
+        
+         const newTasks = tasks.map(task=>{
+            
+            if(taskItem.id === task.id) {
+                return {...task, done: !task.done };
+            } 
+            return task;
+
+        })
+
+        setTasks(newTasks);
     }
 
 
