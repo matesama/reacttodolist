@@ -14,12 +14,8 @@ const DoneTickBox = ({taskItem, tasks, setTasks}) => {
         setTasks(newTasks);
     }
 
-
-
-
     return <input type="checkBox" className="doneTickBox" onClick={handleCheckBox} />;
     
-        
 }
 
 export default DoneTickBox;

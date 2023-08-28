@@ -6,13 +6,10 @@ import EditButton from "./EditButton";
  const ToDoItem = ({index, taskItem, tasks, setTasks}) => {
   const [changeText, setChangeText] = useState("");
   const [editingState, setEditingState] = useState(false);
-    
-    
 
     const handleSave = (e) => {
-      e.preventDefault();
+      e.preventDefault(); 
       const updatedTasks = tasks.map((task) => {
-        
         if(changeText.length === 0) {
           alert("Please write a new todo down before saving")
           required
@@ -22,13 +19,10 @@ import EditButton from "./EditButton";
         }
         return task;
       });
-    
       setTasks(updatedTasks);
-    
       setEditingState(false);
     };
 
-    //Done check box className to strike-through the text.
     
 
     
