@@ -56,7 +56,7 @@ function App() {
   return (
     <div className="Home">
        <a href='/'>
-        <h1>TodoReact</h1>
+        <h1>To Do List</h1>
       </a>  
       <form onSubmit={handleSubmit}>
         <input

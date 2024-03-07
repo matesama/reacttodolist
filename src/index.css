@@ -4,7 +4,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: rgba(10, 10, 10, 0.87);
   background-color: #242424;
 
   font-synthesis: none;
@@ -16,7 +16,7 @@
 
 a {
   font-weight: 500;
-  color: #ffffff;
+  color: #131212;
   text-decoration: inherit;
 }
 a > h1:hover {
@@ -35,12 +35,16 @@ input {
 	transition: border-color 0.25s;
 	margin: 1%;
 	outline: none;
+  color: white;
   }
 
 li {
 	list-style: none;
 	text-decoration: none;
-	color: rgba(255, 255, 255, 0.87);
+	color: rgba(18, 17, 17, 0.87);
+  border-radius: 5%;
+  background-color: aliceblue;
+  font-weight: bold;
 }
 
 body {
@@ -49,11 +53,13 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: rgb(216, 234, 250);
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: rgb(45, 35, 35);
 }
 
 button {
@@ -68,7 +74,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #232def;
 }
 button:focus,
 button:focus-visible {
@@ -77,6 +83,20 @@ button:focus-visible {
 
 .isChecked {
   text-decoration: line-through;
+}
+
+.doneTickBox {
+  margin-right: 1.5rem;
+}
+
+.editButton {
+  margin-right: 0.2rem;
+  margin-left: 1.5rem;
+  padding: 0.2rem;
+}
+
+.deleteButton {
+  padding: 0.2rem;
 }
 
 @media (prefers-color-scheme: light) {

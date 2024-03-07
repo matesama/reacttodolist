@@ -35,10 +35,11 @@ import EditButton from "./EditButton";
          <button type="submit">Save</button> 
       </form>) :  
       <li className={taskItem.done ? "isChecked" : ""}
-      key={taskItem.id}>{taskItem.text}
-      <DoneTickBox taskItem={taskItem} tasks={tasks} setTasks={setTasks}  />
-      <EditButton editingState={editingState} setEditingState={setEditingState} />
-      <DeleteButton taskItem={taskItem} tasks={tasks} setTasks={setTasks} />
+      key={taskItem.id}>
+        <DoneTickBox taskItem={taskItem} tasks={tasks} setTasks={setTasks} />
+        {taskItem.text}
+        <EditButton editingState={editingState} setEditingState={setEditingState} />
+        <DeleteButton taskItem={taskItem} tasks={tasks} setTasks={setTasks} />
       </li>}
 
     
